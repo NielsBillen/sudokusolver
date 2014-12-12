@@ -48,7 +48,7 @@ public class Sudoku {
 		// Perform input validation.
 		if (sudokustring == null)
 			throw new NullPointerException("the given sudokustring is null!");
-		if (sudokustring.length() <= 81)
+		if (sudokustring.length() < 81)
 			throw new IllegalArgumentException(
 					"the sudokustring must be at least 81 characters long!");
 		// Set every value to be possible.
