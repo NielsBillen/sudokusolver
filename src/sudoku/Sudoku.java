@@ -38,10 +38,19 @@ public class Sudoku {
 	 * 
 	 * @param sudokustring
 	 *            The string to create the sudoku from.
-	 * @throws IllegalStateException
+	 * @throws NullPointerException
+	 *             When the sudokustring is null.
+	 * @throws IllegalArgumentException
 	 *             When the string contains a illegal sudoku.
 	 */
-	public Sudoku(String sudokustring) throws IllegalStateException {
+	public Sudoku(String sudokustring) throws NullPointerException,
+			IllegalArgumentException {
+		// Perform input validation.
+		if (sudokustring == null)
+			throw new NullPointerException("the given sudokustring is null!");
+		if (sudokustring.length() <= 81)
+			throw new IllegalArgumentException(
+					"the sudokustring must be at least 81 characters long!");
 		// Set every value to be possible.
 		for (int i = 0; i < 9; i++)
 			for (int k = 0; k < 9; k++)
@@ -115,6 +124,9 @@ public class Sudoku {
 	 *            The column of the value to change (between 0 and 8)
 	 * @param value
 	 *            The value for the number at the position.
+	 * @param isOriginal
+	 *            Boolean indicating whether the value at the given position is
+	 *            an original value.
 	 * @throws IllegalStateException
 	 *             When that number is not possible at the given position.
 	 */
